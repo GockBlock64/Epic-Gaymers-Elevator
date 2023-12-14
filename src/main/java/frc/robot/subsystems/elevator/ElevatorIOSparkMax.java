@@ -1,5 +1,5 @@
 package frc.robot.subsystems.elevator;
 
-public class ElevatorIOSparkMax {
+public class ElevatorIOSparkMax implements ElevatorIO {
     
 }
