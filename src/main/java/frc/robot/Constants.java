@@ -110,6 +110,24 @@ public final class Constants {
     public final static int DRIVE_BACK_RIGHT = 4;
   };
 
+  public static class Elevator {
+    // Motor IDs (CHANGE)
+    public final static int LEFT_MOTOR_ID = 1257;
+    public final static int RIGHT_MOTOR_ID = 1257;
+
+    // PID Constants (CHANGE)
+    public final static double kP = 1257;
+    public final static double kI = 1257;
+    public final static double kD = 1257;
+    public final static double kFF = 1257;
+
+    // Motor Encoder Things (CHANGE)
+    public final static double ELEVATOR_WHEEL_DIAM_M = 1.257;
+    public final static double ELEVATOR_GEARBOX_REDUCTION = 125.7;
+
+    public final static double GEAR_RATIO = 12.57;
+  }
+
   public static double PI = 3.141592653589793238462643;
   public static double UPDATE_PERIOD = 0.010; // seconds
   public final static int NEO_550_CURRENT_LIMIT = 25; // amps
