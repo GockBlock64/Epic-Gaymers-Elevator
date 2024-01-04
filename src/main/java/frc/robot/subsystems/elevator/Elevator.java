@@ -95,6 +95,7 @@ public class Elevator extends SubsystemBase {
   public boolean atSetpoint() {
     return Math.abs(io.getPositionMeters() - setpoint) < ELEVATOR_TOLERANCE;
   }
+
   /**
    * @return Simulation MechanismLigament2d representing the elevator arm
    */
