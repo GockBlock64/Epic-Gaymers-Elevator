@@ -27,4 +27,8 @@ public interface ElevatorIO {
     public void zero(); // Zeroes the motors (sets the current motor position to 0)
 
     public void setSetpoint(double setpoint); //Target position the motor should travel to
+
+    public void startPID();
+    
+    public void endPID();
 }

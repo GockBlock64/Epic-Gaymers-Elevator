@@ -22,4 +22,40 @@ public class ElevatorIOSim implements ElevatorIO {
 
     }
 
+    @Override
+    public void setVoltage(double volts) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setVoltage'");
+    }
+
+    @Override
+    public double getPositionMeters() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPositionMeters'");
+    }
+
+    @Override
+    public double getVelocityMetersPerSec() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getVelocityMetersPerSec'");
+    }
+
+    @Override
+    public void zero() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'zero'");
+    }
+
+    @Override
+    public void startPID() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'startPID'");
+    }
+
+    @Override
+    public void endPID() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'endPID'");
+    }
+
 }

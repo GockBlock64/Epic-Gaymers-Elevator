@@ -94,7 +94,5 @@ public class ElevatorIOSparkMax implements ElevatorIO {
   public void endPID() {
     leftMotor.set(0.0);
   }
-  public boolean atSetpoint() {
-    return Math.abs(getPositionMeters() - setpoint) < TOLERANCE;
-  }
+  
 }
