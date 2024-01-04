@@ -121,6 +121,8 @@ public final class Constants {
     public final static double[] ELEVATOR_PID_SIM = {1.257, 1.257, 1.257};
     public final static double MIN_VELOCITY = 0;
     public final static double MAX_VELOCITY = 12.57;
+    public final static double ELEVATOR_MAX_HEIGHT = 36.0;
+    public final static double ELEVATOR_MIN_HEIGHT = 0.0;    
     public final static double ELEVATOR_TOLERANCE = 1.257;
     // Motor Encoder Things (CHANGE)
     public final static double ELEVATOR_ROTATION_DIAM_M = 1.257;

@@ -8,7 +8,7 @@ public class SetVelocityCommand extends CommandBase {
 
     public SetVelocityCommand(Elevator elevator, double velocity) {
         this.elevator = elevator;
-        elevator.setVelocity(velocity);
+        //elevator.setVelocity(velocity);
     }
 
     

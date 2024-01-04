@@ -4,8 +4,6 @@ import org.littletonrobotics.junction.AutoLog;
 
 
 public interface ElevatorIO {
-    public double ELEVATOR_MAX_HEIGHT = 36.0;
-    public double ELEVATOR_MIN_HEIGHT = 0.0;
 
     @AutoLog
     public static class ElevatorIOInputs {

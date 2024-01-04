@@ -19,6 +19,7 @@ import frc.robot.subsystems.drive.DriveIOSparkMax;
 import frc.robot.subsystems.drive.GyroIOReal;
 import frc.robot.subsystems.elevator.*;
 import frc.robot.util.CommandSnailController;
+import frc.robot.util.CommandSnailController.DPad;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
@@ -35,7 +36,6 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.smartdashboard.Mechanism2d;
 import edu.wpi.first.wpilibj.smartdashboard.MechanismRoot2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 /**
  * This class is where the bulk of the robot should be declared. Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -115,6 +115,10 @@ public class RobotContainer {
 
     // cancel trajectory
     driver.getY().onTrue(drive.endTrajectoryCommand());
+
+    elevator.setDefaultCommand(new RunCommand(() -> elevator.move(operator.getLeftX())));
+    operator.getDPad(DPad.UP).onTrue(elevator.PIDCommand(MAX_HEIGHT));
+    operator.getDPad(DPad.DOWN).onTrue(elevator.PIDCommand(MIN_HEIGHT));
   }
 
   /**

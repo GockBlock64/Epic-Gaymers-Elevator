@@ -36,7 +36,7 @@ public class Elevator extends SubsystemBase {
   }
 
   public double highSetpoint() {
-    return io.ELEVATOR_MAX_HEIGHT;
+    return ELEVATOR_MAX_HEIGHT;
   }
 
   public static enum States {
@@ -64,6 +64,14 @@ public class Elevator extends SubsystemBase {
       io.setFF(LogFF.get());
     }
 
+  public void move(double in) {
+    if (io.getPositionMeters() > ELEVATOR_MAX_HEIGHT && in > 0) {
+      in = 0;
+    } else if (io.getPositionMeters() < ELEVATOR_MIN_HEIGHT && in < 0) {
+      in = 0;
+    }
+    io.setVoltage(in * 12);
+  }
   public void setSetpoint(double setpoint) {
     this.setpoint = setpoint;
   }
