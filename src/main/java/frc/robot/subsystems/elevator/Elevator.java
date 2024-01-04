@@ -62,6 +62,9 @@ public class Elevator extends SubsystemBase {
 
     if (LogD.get() != io.getD())
       io.setD(LogD.get());
+        
+    // Log Inputs
+    Logger.getInstance().processInputs("Elevator", inputs);
   }
 
   /**
