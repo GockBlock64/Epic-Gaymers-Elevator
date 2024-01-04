@@ -120,7 +120,7 @@ public class RobotContainer {
   elevator.setDefaultCommand(new RunCommand( () -> { 
       if(elevator.move(operator.getLeftY()))  {/* make controller rumble */ 
       } else {}
-    }));
+    }, elevator));
     operator.getDPad(DPad.UP).onTrue(elevator.PIDCommandMax());
     operator.getDPad(DPad.DOWN).onTrue(elevator.PIDCommandMin());
     
