@@ -120,7 +120,9 @@ public final class Constants {
     public final static double kI = 1257;
     public final static double kD = 1257;
     public final static double kFF = 1257;
-
+    public final static double MIN_VELOCITY = 0;
+    public final static double MAX_VELOCITY = 12.57;
+    public final static double TOLERANCE = 0.1257;
     // Motor Encoder Things (CHANGE)
     public final static double ELEVATOR_WHEEL_DIAM_M = 1.257;
     public final static double ELEVATOR_GEARBOX_REDUCTION = 125.7;

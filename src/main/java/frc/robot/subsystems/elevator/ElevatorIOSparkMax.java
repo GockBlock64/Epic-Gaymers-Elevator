@@ -17,7 +17,7 @@ public class ElevatorIOSparkMax implements ElevatorIO {
   private RelativeEncoder encoder;
 
   private SparkMaxPIDController PIDController;
-
+  private double setpoint;
   public ElevatorIOSparkMax() {
     leftMotor = new CANSparkMax(LEFT_MOTOR_ID, MotorType.kBrushless);
     rightMotor = new CANSparkMax(RIGHT_MOTOR_ID, MotorType.kBrushless);
@@ -48,6 +48,7 @@ public class ElevatorIOSparkMax implements ElevatorIO {
   
   
   private void configurePID() {
+    PIDController.setOutputRange(MIN_VELOCITY, MAX_VELOCITY);
     PIDController.setP(kP);
     PIDController.setI(kI);
     PIDController.setD(kD);
@@ -83,6 +84,17 @@ public class ElevatorIOSparkMax implements ElevatorIO {
   
   @Override
   public void setSetpoint(double setpoint) {
+    this.setpoint = setpoint;
+  }
+
+  public void startPID() {
     PIDController.setReference(setpoint, ControlType.kPosition);
+  }
+
+  public void endPID() {
+    leftMotor.set(0.0);
+  }
+  public boolean atSetpoint() {
+    return Math.abs(getPositionMeters() - setpoint) < TOLERANCE;
   }
 }
