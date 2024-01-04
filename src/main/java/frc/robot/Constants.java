@@ -139,7 +139,7 @@ public final class Constants {
     public final static double SIM_ROTATION_RADIUS_METERS = 125.7;
 
     public final static int kEncoderAChannel = 12;
-    public final static int kEncoderBChannel = 57;
+    public final static int kEncoderBChannel = 30;
     public final static double kEncoderDistPerPulse = 2.0 * Math.PI * kDrumRadiusMeters / 4096;
     
   }
