@@ -102,10 +102,6 @@ public class ElevatorIOSparkMax implements ElevatorIO {
   public double getD() {
       return ELEVATOR_PID_REAL[2];
   }
-  @Override
-  public double getFF() {
-      return ELEVATOR_PID_REAL[3];
-  }
 
   @Override
   public void setP(double kP) {
@@ -118,9 +114,5 @@ public class ElevatorIOSparkMax implements ElevatorIO {
   @Override
   public void setD(double kD) {
       ELEVATOR_PID_REAL[2] = kD;
-  }
-  @Override
-  public void setFF(double kFF) {
-      ELEVATOR_PID_REAL[3] = kFF;
   }
 }

@@ -22,7 +22,6 @@ public class Elevator extends SubsystemBase {
   private LoggedDashboardNumber LogP;
   private LoggedDashboardNumber LogI;
   private LoggedDashboardNumber LogD;
-  private LoggedDashboardNumber LogFF;
 
   private MechanismLigament2d elevatorMechanism;
 
@@ -35,7 +34,6 @@ public class Elevator extends SubsystemBase {
     LogP = new LoggedDashboardNumber("Elevator/P", io.getP());
     LogI = new LoggedDashboardNumber("Elevator/I", io.getI());
     LogD = new LoggedDashboardNumber("Elevator/D", io.getD());
-    LogFF = new LoggedDashboardNumber("Elevator/FF", io.getFF());
   }
 
   /*
@@ -64,9 +62,6 @@ public class Elevator extends SubsystemBase {
 
     if (LogD.get() != io.getD())
       io.setD(LogD.get());
-
-    if (LogFF.get() != io.getFF())
-      io.setFF(LogFF.get());
   }
 
   /**

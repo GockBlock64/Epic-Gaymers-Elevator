@@ -46,10 +46,8 @@ public interface ElevatorIO {
     public default void setP(double kP){}
     public default void setI(double kI){}
     public default void setD(double kD){}
-    public default void setFF(double kFF){}
 
     public default double getP(){return 0.0;}
     public default double getI(){return 0.0;}
-    public default double getD(){return 0.0;}
-    public default double getFF(){return 0.0;}   
+    public default double getD(){return 0.0;}  
 }

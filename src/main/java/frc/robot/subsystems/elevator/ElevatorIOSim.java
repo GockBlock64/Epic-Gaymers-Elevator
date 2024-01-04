@@ -83,10 +83,6 @@ public class ElevatorIOSim implements ElevatorIO {
   public double getD() {
       return ELEVATOR_PID_SIM[2];
   }
-  @Override
-  public double getFF() {
-      return ELEVATOR_PID_SIM[3];
-  }
 
   @Override
   public void setP(double kP) {
@@ -99,9 +95,5 @@ public class ElevatorIOSim implements ElevatorIO {
   @Override
   public void setD(double kD) {
       ELEVATOR_PID_SIM[2] = kD;
-  }
-  @Override
-  public void setFF(double kFF) {
-      ELEVATOR_PID_SIM[3] = kFF;
   }
 }
