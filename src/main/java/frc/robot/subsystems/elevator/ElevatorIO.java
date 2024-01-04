@@ -5,6 +5,9 @@ import org.littletonrobotics.junction.AutoLog;
 
 public interface ElevatorIO {
 
+    /**
+     * A class that contains all the inputs for the elevator
+     */
     @AutoLog
     public static class ElevatorIOInputs {
         public double positionMeters = 0.0;
