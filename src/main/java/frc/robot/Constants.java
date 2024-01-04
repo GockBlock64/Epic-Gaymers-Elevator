@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.util.Units;
 
 /**
@@ -116,16 +117,28 @@ public final class Constants {
     public final static int RIGHT_MOTOR_ID = 1257;
 
     // PID Constants (CHANGE)
-    public final static double kP = 1257;
-    public final static double kI = 1257;
-    public final static double kD = 1257;
-    public final static double kFF = 1257;
+    public final static double[] ELEVATOR_PID_REAL = {1.257, 1.257, 1.257};
+    public final static double[] ELEVATOR_PID_SIM = {1.257, 1.257, 1.257};
 
+    public final static double ELEVATOR_TOLERANCE = 1.257;
     // Motor Encoder Things (CHANGE)
-    public final static double ELEVATOR_WHEEL_DIAM_M = 1.257;
+    public final static double ELEVATOR_ROTATION_DIAM_M = 1.257;
     public final static double ELEVATOR_GEARBOX_REDUCTION = 125.7;
-
     public final static double GEAR_RATIO = 12.57;
+
+    // Simulation Constants
+    public final static DCMotor kGearbox = DCMotor.getNEO(1257);
+    public final static double kCarriageMass = 125.7;
+    public final static double kDrumRadiusMeters = 125.7;
+    public final static double kMinHeightMeters = 125.7;
+    public final static double kMaxHeightMeters = 125.7;
+
+    public final static double SIM_ROTATION_RADIUS_METERS = 125.7;
+
+    public final static int kEncoderAChannel = 12;
+    public final static int kEncoderBChannel = 57;
+    public final static double kEncoderDistPerPulse = 2.0 * Math.PI * kDrumRadiusMeters / 4096;
+    
   }
 
   public static double PI = 3.141592653589793238462643;

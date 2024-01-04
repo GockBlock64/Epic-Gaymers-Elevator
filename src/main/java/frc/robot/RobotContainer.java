@@ -17,7 +17,7 @@ import frc.robot.subsystems.drive.DriveIO;
 import frc.robot.subsystems.drive.DriveIOSim;
 import frc.robot.subsystems.drive.DriveIOSparkMax;
 import frc.robot.subsystems.drive.GyroIOReal;
-
+import frc.robot.subsystems.elevator.*;
 import frc.robot.util.CommandSnailController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
@@ -47,6 +47,7 @@ public class RobotContainer {
   // Subsystems
   private final Drive drive;
   private final GyroIOReal gyro = GyroIOReal.getInstance();
+  private final Elevator elevator;
 
   private Mechanism2d mech = new Mechanism2d(3, 3);
 
@@ -67,17 +68,20 @@ public class RobotContainer {
       // Real robot, instantiate hardware IO implementations
       case REAL:
         drive = new Drive(new DriveIOSparkMax(), new Pose2d());
+        elevator = new Elevator(new ElevatorIOSparkMax());
         break;
 
       // Sim robot, instantiate physics sim IO implementations
       case SIM:
         drive = new Drive(new DriveIOSim(), new Pose2d());
+        elevator = new Elevator(new ElevatorIOSim());
         break;
 
       // Replayed robot, disable IO implementations
       default:
         drive = new Drive(new DriveIO() {
-        }, new Pose2d());
+      }, new Pose2d());
+        elevator = new Elevator(new ElevatorIO() {});
         break;
     }
 

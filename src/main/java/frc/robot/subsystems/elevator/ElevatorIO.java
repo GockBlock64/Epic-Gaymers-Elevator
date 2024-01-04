@@ -2,29 +2,53 @@ package frc.robot.subsystems.elevator;
 
 import org.littletonrobotics.junction.AutoLog;
 
-import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 
 public interface ElevatorIO {
-    public enum State {
-        MANUAL,
-        PID
-    }
+    public double ELEVATOR_MAX_HEIGHT = 36.0;
+    public double ELEVATOR_MIN_HEIGHT = 0.0;
 
     @AutoLog
     public static class ElevatorIOInputs {
-        public double positionRad = 0.0;
-        public double velocityRadPerSec = 0.0;
+        public double positionMeters = 0.0;
+        public double velocityMetersPerSec = 0.0;
+        public double appliedVolts = 0.0;
+        public double[] currentAmps = new double[] {};
+        public double[] tempCelsius = new double[] {};
     }
 
-    public void updateInputs(ElevatorIOInputs inputs);
+    public default void updateInputs(ElevatorIOInputs inputs) {
 
-    public void setVoltage(double volts);
+    }
 
-    public double getPositionMeters(); //Position of the elevator
+    public default double getPositionMeters() {
+        return 0.0;
+    } //Position of the elevator
 
-    public double getVelocityMetersPerSec(); //Velocity of the elevator
+    public default double getVelocityMetersPerSec() {
+        return 0.0;
+    } //Velocity of the elevator
 
-    public void zero(); // Zeroes the motors (sets the current motor position to 0)
+    public default void zero() {
 
-    public void setSetpoint(double setpoint); //Target position the motor should travel to
+    } // Zeroes the motors (sets the current motor position to 0)
+
+    public default void setSetpoint(double setpoint) {
+        
+    } //Target position the motor should travel to
+    
+    public default void setVoltage(double volts){
+
+    }
+
+    public default void setVelocity(double velocity) {}
+
+    public default void setP(double kP){}
+    public default void setI(double kI){}
+    public default void setD(double kD){}
+    public default void setFF(double kFF){}
+
+    public default double getP(){return 0.0;}
+    public default double getI(){return 0.0;}
+    public default double getD(){return 0.0;}
+    public default double getFF(){return 0.0;}   
 }

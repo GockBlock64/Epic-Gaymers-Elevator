@@ -6,6 +6,7 @@ import com.revrobotics.SparkMaxPIDController;
 import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.util.Units;
 
 import static frc.robot.Constants.Elevator.*;
@@ -40,30 +41,22 @@ public class ElevatorIOSparkMax implements ElevatorIO {
   private void configureEncoders() {
     encoder = leftMotor.getEncoder();
 
-    encoder.setPositionConversionFactor(Math.PI * ELEVATOR_WHEEL_DIAM_M / ELEVATOR_GEARBOX_REDUCTION);
-    encoder.setVelocityConversionFactor(Math.PI * ELEVATOR_WHEEL_DIAM_M / ELEVATOR_GEARBOX_REDUCTION / 60.0);
+    encoder.setPositionConversionFactor(Math.PI * ELEVATOR_ROTATION_DIAM_M / ELEVATOR_GEARBOX_REDUCTION);
+    encoder.setVelocityConversionFactor(Math.PI * ELEVATOR_ROTATION_DIAM_M / ELEVATOR_GEARBOX_REDUCTION / 60.0);
 
     encoder.setPosition(0);
   }
-  
-  
+
   private void configurePID() {
-    PIDController.setP(kP);
-    PIDController.setI(kI);
-    PIDController.setD(kD);
-    PIDController.setFF(kFF);
+    PIDController.setP(ELEVATOR_PID_REAL[0]);
+    PIDController.setI(ELEVATOR_PID_REAL[1]);
+    PIDController.setD(ELEVATOR_PID_REAL[2]);
   }
 
   @Override
   public void updateInputs(ElevatorIOInputs inputs) {
-    inputs.positionRad = Units.rotationsToRadians(encoder.getPosition() / GEAR_RATIO);
-    inputs.velocityRadPerSec = Units.rotationsPerMinuteToRadiansPerSecond(
-        encoder.getVelocity() / GEAR_RATIO);
-  }
-
-  @Override
-  public void setVoltage(double volts) {
-    leftMotor.setVoltage(volts);
+    inputs.positionMeters = encoder.getPosition() * encoder.getPositionConversionFactor();
+    inputs.velocityMetersPerSec = encoder.getVelocity() * encoder.getVelocityConversionFactor();
   }
 
   @Override
@@ -84,5 +77,49 @@ public class ElevatorIOSparkMax implements ElevatorIO {
   @Override
   public void setSetpoint(double setpoint) {
     PIDController.setReference(setpoint, ControlType.kPosition);
+  }
+
+  @Override
+  public void setVoltage(double volts) {
+    leftMotor.setVoltage(MathUtil.clamp(volts,-12.0,12.0));
+  }
+
+  @Override
+  public void setVelocity(double velocity) {
+    leftMotor.set(velocity);
+  }
+
+  @Override
+  public double getP() {
+      return ELEVATOR_PID_REAL[0];
+  }
+  @Override
+  public double getI() {
+      return ELEVATOR_PID_REAL[1];
+  }
+  @Override
+  public double getD() {
+      return ELEVATOR_PID_REAL[2];
+  }
+  @Override
+  public double getFF() {
+      return ELEVATOR_PID_REAL[3];
+  }
+
+  @Override
+  public void setP(double kP) {
+      ELEVATOR_PID_REAL[0] = kP;
+  }
+  @Override
+  public void setI(double kI) {
+      ELEVATOR_PID_REAL[1] = kI;
+  }
+  @Override
+  public void setD(double kD) {
+      ELEVATOR_PID_REAL[2] = kD;
+  }
+  @Override
+  public void setFF(double kFF) {
+      ELEVATOR_PID_REAL[3] = kFF;
   }
 }
